@@ -17,26 +17,23 @@ Object.keys(entrys).forEach((pageName) => {
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
   let pages = {}
+  let rootPath = ''
   const env = loadEnv(mode, process.cwd())
   const isDev = mode === 'development'
-
-  console.log(env.VITE_APP_MODULE)
   
-
   if (isDev) {
     pages = { ...project_pages }
   } else {
     if (env.VITE_APP_MODULE) {
       pages[env.VITE_APP_MODULE] = project_pages[env.VITE_APP_MODULE]
+      rootPath = `./src/modules/${env.VITE_APP_MODULE}/`
     } else {
       pages = { ...project_pages }
     }
   }
 
-  console.log(pages)
-
   return {
-    root: env.VITE_APP_ROOTPATH,
+    root: rootPath,
     build: {
       rollupOptions: {
         input: pages,

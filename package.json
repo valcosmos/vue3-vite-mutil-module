@@ -5,11 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "dev:m1": "cross-env APP_MODEL_ENV=m1 vite serve src/modules/m1 --config vite.config.ts --mode production",
-    "dev:m2": "vite serve src/modules/m2 --config vite.config.ts",
+    "dev:m1": "cross-env APP_MODEL_ENV=m1 vite serve src/modules/m1 --config vite.config.ts",
+    "dev:m2": "cross-env APP_MODEL_ENV=m2 vite serve src/modules/m2 --config vite.config.ts",
     "build": "vue-tsc && vite build",
-    "build:m1": "vue-tsc && VITE_APP_MODULE=m1 VITE_APP_ROOTPATH=./src/modules/m1/ vite build --mode production",
-    "build:m2": "cross-env APP_MODEL_ENV=m2 vue-tsc && vite build -m m2",
+    "build:m1": "vue-tsc && cross-env VITE_APP_MODULE=m1 vite build --mode production",
+    "build:m2": "vue-tsc && cross-env VITE_APP_MODULE=m2 vite build --mode production",
     "preview": "vite preview"
   },
   "dependencies": {
